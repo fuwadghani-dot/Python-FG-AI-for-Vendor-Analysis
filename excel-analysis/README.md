@@ -113,9 +113,29 @@ python -m pytest -q
 
 ---
 
-If you'd like, I can also:
-- Make the repo public, or
-- Set up a Streamlit Cloud deployment, or
-- Create a GitHub Release attaching the latest report (`reports/exports/vendor_report.xlsx`).
+## ☁️ Deploy to Streamlit Community Cloud (one-click)
 
-Tell me which of the above you'd like me to do next.
+You can host the interactive Streamlit app publicly using Streamlit Community Cloud (formerly Streamlit Sharing). Follow these steps:
+
+1. Make the repository **public** (or add me as a collaborator so I can create the app for you).
+2. Go to https://share.streamlit.io, sign in with GitHub, and create a new app.
+   - Choose this repository, the `supplier-analysis` branch and set the main file to `app.py`.
+3. Add the required secrets (use the **Secrets** section in the Streamlit Cloud UI):
+   - `SERVICE_TOKEN`, SMTP settings (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `ALERT_FROM`, `ALERT_TO`), and optionally `REPORT_BASE_URL`.
+4. Streamlit Cloud will build the app and provide a public URL you can share.
+
+> Notes: Streamlit Cloud auto-deploys on pushes to the selected branch. Do not commit secrets; use the Cloud secrets UI.
+
+### Quick checklist for Streamlit deploy
+
+- [ ] `app.py` at repo root (present)
+- [ ] `requirements.txt` (present)
+- [ ] Add secrets via Streamlit Cloud UI
+- [ ] Make repo public or invite a Streamlit app maintainer
+
+If you want, I can:
+- Make the repository public for you (I’ll need permission), or
+- Create a `.streamlit/secrets.example.toml` file and add a short deploy guide (I can do that now), or
+- Open a PR on your behalf with the deploy changes and instructions.
+
+Tell me which of these you want me to take care of next.
