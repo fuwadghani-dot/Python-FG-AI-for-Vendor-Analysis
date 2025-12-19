@@ -1,0 +1,23 @@
+[Unit]
+Description=Excel Report Service (uvicorn)
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USER
+Group=YOUR_GROUP
+WorkingDirectory=/path/to/your/repo
+Environment=PYTHONUNBUFFERED=1
+Environment=SERVICE_TOKEN=your_token_here
+Environment=SMTP_HOST=your_smtp_host
+Environment=SMTP_PORT=587
+Environment=SMTP_USER=your_user
+Environment=SMTP_PASS=your_pass
+Environment=ALERT_FROM=alerts@example.com
+Environment=ALERT_TO=team@example.com
+ExecStart=/path/to/venv/bin/uvicorn scripts.service:app --host 0.0.0.0 --port 8000
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
